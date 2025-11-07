@@ -9,6 +9,7 @@ import { ArrowRight, QrCode, Copy, ExternalLink, Settings } from "lucide-react";
 import { toast } from "sonner";
 import { getUserPaymentSettings } from "@/lib/api/expenses";
 import { setAuthToken } from "@/lib/apiClient";
+import { getImageUrl } from "@/utils/constants";
 
 export function BalanceSettlementCard({ balance, tripId, formatCurrency }) {
     const { getToken } = useAuth();
@@ -158,7 +159,7 @@ export function BalanceSettlementCard({ balance, tripId, formatCurrency }) {
                                             Scan QR Code to Pay
                                         </div>
                                         <img
-                                            src={paymentSettings.qrCodeUrl}
+                                            src={getImageUrl(paymentSettings.qrCodeUrl)}
                                             alt="Payment QR Code"
                                             className="w-52 h-52 rounded-lg border-4 border-white shadow-lg"
                                         />

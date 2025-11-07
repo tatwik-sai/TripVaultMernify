@@ -54,7 +54,7 @@ export default function CaptureViewModal({ capture, tripId, open, onOpenChange }
     const canEditDescription = isUploader;
     const isLiked = capture.likes?.some(like => like.userId === user?.id);
     const isVideo = capture.fileType === "video";
-    const imageUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8747'}${capture.fileUrl}`;
+    const imageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8747'}${capture.fileUrl}`;
 
     const handleLike = async () => {
         if (isLiking) return;

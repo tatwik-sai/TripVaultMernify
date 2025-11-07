@@ -63,7 +63,7 @@ export const createProposal = async (req, res) => {
         // Handle uploaded images
         const images = req.files ? req.files.map(file => ({
             fileName: file.filename,
-            fileUrl: `${process.env.ORIGIN_BACKEND || 'http://localhost:8747'}/uploads/${file.filename}`,
+            fileUrl: `/uploads/${file.filename}`,
             uploadedAt: new Date()
         })) : [];
 
@@ -247,7 +247,7 @@ export const updateProposal = async (req, res) => {
         if (req.files && req.files.length > 0) {
             const newImages = req.files.map(file => ({
                 fileName: file.filename,
-                fileUrl: `${process.env.ORIGIN_BACKEND || 'http://localhost:8747'}/uploads/${file.filename}`,
+                fileUrl: `/uploads/${file.filename}`,
                 uploadedAt: new Date()
             }));
             proposal.images = [...proposal.images, ...newImages];

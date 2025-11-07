@@ -17,6 +17,7 @@ import { useProposalStore } from "@/store/useProposalStore";
 import { setAuthToken } from "@/lib/apiClient";
 import { toast } from "sonner";
 import { Loader2, X, Link as LinkIcon, Plus, ImagePlus } from "lucide-react";
+import { getImageUrl } from "@/utils/constants";
 
 const EditProposalDialog = ({ proposal, open, onOpenChange }) => {
     const { getToken } = useAuth();
@@ -372,7 +373,7 @@ const EditProposalDialog = ({ proposal, open, onOpenChange }) => {
                                         {proposal.images.map((image) => (
                                             <div key={image._id} className="relative aspect-square rounded-lg overflow-hidden border">
                                                 <img 
-                                                    src={image.fileUrl} 
+                                                    src={getImageUrl(image.fileUrl)} 
                                                     alt="Proposal"
                                                     className="w-full h-full object-cover"
                                                 />

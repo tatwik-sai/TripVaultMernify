@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useProposalStore } from "@/store/useProposalStore";
 import { setAuthToken } from "@/lib/apiClient";
 import { toast } from "sonner";
+import { getImageUrl } from "@/utils/constants";
 import { 
     Lightbulb, 
     BarChart3, 
@@ -204,7 +205,7 @@ const ProposalCard = ({ proposal, tripCreatorId, currentUserId }) => {
                             {proposal.images.map((image, index) => (
                                 <div key={index} className="relative aspect-video rounded-lg overflow-hidden border">
                                     <img
-                                        src={image.fileUrl}
+                                        src={getImageUrl(image.fileUrl)}
                                         alt={`Image ${index + 1}`}
                                         className="w-full h-full object-cover"
                                     />

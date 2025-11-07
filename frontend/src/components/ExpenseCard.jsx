@@ -16,6 +16,7 @@ import {
 import { MoreVertical, FileText, Trash2, CheckCircle, Circle, Download, Edit } from "lucide-react";
 import { toast } from "sonner";
 import { setAuthToken } from "@/lib/apiClient";
+import { getImageUrl } from "@/utils/constants";
 
 export function ExpenseCard({ expense, tripId, formatCurrency, tripCreatorId }) {
     const { user } = useUser();
@@ -76,7 +77,7 @@ export function ExpenseCard({ expense, tripId, formatCurrency, tripCreatorId }) 
 
     const handleDownloadBill = () => {
         if (expense.billImageUrl) {
-            window.open(expense.billImageUrl, "_blank");
+            window.open(getImageUrl(expense.billImageUrl), "_blank");
         }
     };
 

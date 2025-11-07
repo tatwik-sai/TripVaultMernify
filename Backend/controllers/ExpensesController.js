@@ -70,7 +70,7 @@ export const createExpense = async (req, res) => {
             currency: trip.budget?.currency || "INR",
             category: category.toLowerCase(),
             paidBy: userId,
-            billImageUrl: req.file ? `${process.env.ORIGIN_BACKEND || 'http://localhost:8747'}/uploads/${req.file.filename}` : "",
+            billImageUrl: req.file ? `/uploads/${req.file.filename}` : "",
             splits: calculatedSplits,
             expenseDate: expenseDate || new Date(),
             notes: notes || ""
@@ -542,7 +542,7 @@ export const updatePaymentSettings = async (req, res) => {
                     console.error("Error deleting old QR code:", err);
                 }
             }
-            settings.qrCodeUrl = `${process.env.ORIGIN_BACKEND || 'http://localhost:8747'}/uploads/${req.file.filename}`;
+            settings.qrCodeUrl = `/uploads/${req.file.filename}`;
         }
 
         await settings.save();

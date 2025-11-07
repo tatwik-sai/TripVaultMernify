@@ -65,7 +65,7 @@ export default function CaptureCard({ capture, tripId, onClick }) {
             if (token) {
                 setAuthToken(token);
             }
-            const fileUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8747'}${capture.fileUrl}`;
+            const fileUrl = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8747'}${capture.fileUrl}`;
             await downloadCapture(fileUrl, capture.originalFileName || capture.fileName);
             toast.success("Download started");
         } catch (error) {
@@ -98,7 +98,7 @@ export default function CaptureCard({ capture, tripId, onClick }) {
         }
     };
 
-    const imageUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8747'}${capture.fileUrl}`;
+    const imageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8747'}${capture.fileUrl}`;
     const isVideo = capture.fileType === "video";
 
     return (
