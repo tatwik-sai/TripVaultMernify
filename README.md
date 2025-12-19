@@ -2,28 +2,16 @@
 
 TripVault is a collaborative trip and event management platform that consolidates all aspects of group travel planning into one unified workspace. From initial brainstorming to post trip memories, friends can plan itineraries, split expenses, share photos, and coordinate activities in real time eliminating the need to juggle multiple apps.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Status](https://img.shields.io/badge/status-production%20ready-success.svg)
-![License](https://img.shields.io/badge/license-ISC-green.svg)
-
 ## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
 - [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
 - [Authentication](#authentication)
 - [Real-time Features](#real-time-features)
 - [Settlement Algorithm](#settlement-algorithm)
-- [File Upload](#file-upload)
 - [Security Features](#security-features)
-- [Error Handling](#error-handling)
-- [Development Notes](#development-notes)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -33,17 +21,17 @@ Whether you're planning a weekend getaway or an extended vacation, TripVault kee
 
 ### Key Highlights
 
-- ✅ **Complete Expense Management** - Track, categorize, and split expenses effortlessly
-- ✅ **Smart Settlement Calculator** - Automatically calculates who owes whom with optimized transactions
-- ✅ **Real-time Updates** - Live synchronization across all users
-- ✅ **Comprehensive Analytics** - Visual insights into spending patterns
-- ✅ **Secure Authentication** - Clerk-powered authentication with JWT tokens
-- ✅ **Payment QR Codes** - Easy payment tracking with QR code uploads
-- ✅ **Receipt Management** - Upload and view expense receipts
-- ✅ **Export Functionality** - Export expenses as PDF or CSV
-- ✅ **Idea Board** - Collaborative trip planning with ideas and suggestions
-- ✅ **Transaction Logging** - Complete audit trail of all activities
-- ✅ **Captures & Moments** - Share photos and capture memorable trip moments with your group
+-  **Complete Expense Management** - Track, categorize, and split expenses effortlessly
+-  **Smart Settlement Calculator** - Automatically calculates who owes whom with optimized transactions
+-  **Real-time Updates** - Live synchronization across all users
+-  **Comprehensive Analytics** - Visual insights into spending patterns
+-  **Secure Authentication** - Clerk-powered authentication with JWT tokens
+-  **Payment QR Codes** - Easy payment tracking with QR code uploads
+-  **Receipt Management** - Upload and view expense receipts
+-  **Export Functionality** - Export expenses as PDF or CSV
+-  **Idea Board** - Collaborative trip planning with ideas and suggestions
+-  **Transaction Logging** - Complete audit trail of all activities
+-  **Captures & Moments** - Share photos and capture memorable trip moments with your group
 
 ## Features
 
@@ -149,82 +137,6 @@ Whether you're planning a weekend getaway or an extended vacation, TripVault kee
 - **Development**: ESLint
 - **Build Tool**: Next.js Build
 
-## 📁 Project Structure
-
-```
-TripVault/
-├── Backend/                          # Express.js backend
-│   ├── controllers/                  # Business logic
-│   │   ├── ExpenseController.js     # Expense CRUD & export
-│   │   ├── SettlementController.js  # Settlement calculations
-│   │   ├── TransactionLogController.js # Activity logging
-│   │   ├── TripController.js        # Trip management
-│   │   ├── UserController.js        # User & QR code
-│   │   ├── ClerkController.js       # Clerk webhook handler
-│   │   ├── DetailsController.js     # Idea board management
-│   │   └── CapturesController.js    # Captures management
-│   ├── models/                      # MongoDB schemas
-│   │   ├── ExpenseModel.js         # Expense schema
-│   │   ├── SettlementModel.js      # Settlement schema
-│   │   ├── TransactionLogModel.js  # Log schema
-│   │   ├── TripModel.js            # Trip schema
-│   │   ├── UserModel.js            # User schema
-│   │   ├── IdeaModel.js            # Idea schema
-│   │   └── CaptureModel.js         # Capture schema
-│   ├── routes/                      # API routes
-│   │   ├── ExpenseRoutes.js        # Expense endpoints
-│   │   ├── SettlementRoutes.js     # Settlement endpoints
-│   │   ├── TransactionLogRoutes.js # Log endpoints
-│   │   ├── TripRoutes.js           # Trip endpoints
-│   │   ├── UserRoutes.js           # User endpoints
-│   │   ├── ClerkRoutes.js          # Clerk webhook routes
-│   │   ├── DetailsRoutes.js        # Idea board routes
-│   │   └── CapturesRoutes.js       # Captures routes
-│   ├── middleware/                  # Custom middleware
-│   │   ├── auth.js                 # Clerk JWT verification
-│   │   └── upload.js               # Multer file upload
-│   ├── uploads/                     # Uploaded files directory
-│   ├── socket.js                    # Socket.io setup
-│   ├── index.js                     # Main server file
-│   ├── package.json                 # Dependencies
-│   ├── API_DOCUMENTATION.md        # Complete API docs
-│   ├── README.md                    # Backend documentation
-│   └── env.example                  # Environment template
-│
-├── frontend/                         # Next.js frontend
-│   ├── src/
-│   │   ├── app/                     # Next.js app router
-│   │   │   ├── (auth)/             # Authentication pages
-│   │   │   │   ├── sign-in/        # Sign in page
-│   │   │   │   └── sign-up/        # Sign up page
-│   │   │   ├── (vault)/            # Protected routes
-│   │   │   │   ├── console/        # Dashboard/console
-│   │   │   │   └── trip/           # Trip pages
-│   │   │   │       └── [tripid]/
-│   │   │   │           ├── expenses/ # Expenses page
-│   │   │   │           │   ├── components/ # Expense components
-│   │   │   │           │   ├── page.js
-│   │   │   │           │   └── ...
-│   │   │   │           ├── details/  # Idea board page
-│   │   │   │           └── captures/ # Captures page
-│   │   │   ├── layout.js            # Root layout
-│   │   │   └── page.js              # Home page
-│   │   ├── components/              # Reusable components
-│   │   │   └── ui/                 # UI components
-│   │   ├── context/                 # React contexts
-│   │   │   └── SocketContext.js    # Socket.io context
-│   │   ├── lib/                     # Utilities
-│   │   │   ├── apiClient.js        # API client setup
-│   │   │   └── utils.js            # Helper functions
-│   │   ├── utils/                   # Constants
-│   │   │   └── constants.js        # App constants
-│   │   └── middleware.js            # Next.js middleware
-│   ├── public/                      # Static assets
-│   ├── package.json                 # Dependencies
-│   └── README.md                    # Frontend documentation
-│
-└── README.md                         # This file
-```
 
 ## Installation
 
@@ -369,121 +281,6 @@ For **MongoDB Atlas**:
 DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/tripvault
 ```
 
-## Usage
-
-### Creating Your First Trip
-
-1. Sign up or sign in to your account
-2. Navigate to the Console page
-3. Click "Create Trip"
-4. Fill in trip details (name, budget, dates, etc.)
-5. Add members to the trip
-6. Start adding expenses!
-
-### Managing Expenses
-
-1. Navigate to a trip's Expenses page
-2. Click "Add Expense"
-3. Fill in expense details:
-   - Amount
-   - Description
-   - Category
-   - Date
-   - Paid by (member)
-   - Split among (members)
-   - Optional receipt upload
-4. Save the expense
-5. View expenses in the list
-6. Edit or delete expenses (admin/creator only)
-
-### Settling Expenses
-
-1. Navigate to the "Settlements" tab
-2. View automatic settlement calculations
-3. See who owes whom
-4. Click "View QR" to see payment QR codes
-5. Mark settlements as paid when completed
-
-### Using the Idea Board
-
-1. Navigate to a trip's Details page
-2. Click "Add Idea"
-3. Fill in idea details
-4. Search and filter ideas
-5. Delete ideas as needed
-
-### Sharing Captures & Moments
-
-1. Navigate to a trip's Captures page
-2. Click "Add Capture" to upload photos
-3. Select one or multiple images
-4. Add a caption and description
-5. Optionally add location and date tags
-6. Save the capture to share with trip members
-7. View all captures in a beautiful gallery layout
-8. Like and comment on captures from other members
-9. Filter captures by date or location
-10. Real-time updates when new captures are added by any member
-
-## API Documentation
-
-### Base URL
-```
-http://localhost:3001/api
-```
-
-### Authentication
-All API endpoints (except `/clerk`) require authentication:
-
-```http
-Authorization: Bearer <clerk-jwt-token>
-```
-
-### Main Endpoints
-
-#### Trips
-- `GET /api/trips` - Get all user trips
-- `GET /api/trips/:tripId` - Get trip by ID
-- `POST /api/trips` - Create new trip
-- `PUT /api/trips/:tripId` - Update trip
-- `POST /api/trips/:tripId/members` - Add member
-
-#### Expenses
-- `GET /api/trips/:tripId/expenses` - Get all expenses
-- `POST /api/trips/:tripId/expenses` - Create expense (with file upload)
-- `PUT /api/trips/:tripId/expenses/:expenseId` - Update expense
-- `DELETE /api/trips/:tripId/expenses/:expenseId` - Delete expense
-- `GET /api/trips/:tripId/expenses/export/csv` - Export as CSV
-- `GET /api/trips/:tripId/expenses/export/pdf` - Export as PDF
-
-#### Settlements
-- `GET /api/trips/:tripId/settlements` - Calculate settlements
-- `POST /api/trips/:tripId/settlements/mark-paid` - Mark as paid
-- `GET /api/trips/:tripId/settlements/history` - Get history
-
-#### Transaction Logs
-- `GET /api/trips/:tripId/transaction-log` - Get logs
-- `GET /api/trips/:tripId/transaction-log/stats` - Get statistics
-
-#### User
-- `GET /api/user/profile` - Get user profile
-- `PUT /api/user/profile` - Update profile
-- `POST /api/user/payment-qr` - Upload QR code
-
-#### Ideas
-- `GET /api/details/ideas` - Get all ideas
-- `POST /api/details/ideas` - Create idea
-- `DELETE /api/details/ideas/:ideaId` - Delete idea
-
-#### Captures
-- `GET /api/trips/:tripId/captures` - Get all captures for a trip
-- `POST /api/trips/:tripId/captures` - Create new capture with images
-- `GET /api/trips/:tripId/captures/:captureId` - Get capture by ID
-- `PUT /api/trips/:tripId/captures/:captureId` - Update capture
-- `DELETE /api/trips/:tripId/captures/:captureId` - Delete capture
-- `POST /api/trips/:tripId/captures/:captureId/like` - Like a capture
-- `POST /api/trips/:tripId/captures/:captureId/comment` - Add comment to capture
-
 ## Authentication
 
 TripVault uses **Clerk** for authentication. The system supports:
@@ -509,19 +306,6 @@ All routes except `/` and `/sign-in`, `/sign-up` are protected by Clerk middlewa
 
 TripVault uses **Socket.io** for real-time updates:
 
-### Socket Events
-
-#### Server Events
-- `expense-added` - New expense created
-- `expense-updated` - Expense modified
-- `expense-deleted` - Expense removed
-- `payment-made` - Settlement marked as paid
-- `capture-added` - New capture/photos shared
-- `capture-updated` - Capture modified
-- `capture-deleted` - Capture removed
-- `capture-liked` - Capture received a like
-- `capture-commented` - New comment on capture
-
 ### Real-time Updates
 
 All users in a trip receive instant updates when:
@@ -544,88 +328,13 @@ The backend uses an optimized greedy algorithm to calculate settlements:
 
 This minimizes the number of transactions needed for settlement.
 
-## File Upload
-
-### Configuration
-- **Max Size**: 5MB
-- **Allowed Types**: JPEG, JPG, PNG, GIF, WEBP
-- **Storage**: Local filesystem in `/uploads` directory
-
-### Endpoints with Upload
-- `POST /api/trips/:tripId/expenses` - Field: `receipt`
-- `PUT /api/trips/:tripId/expenses/:expenseId` - Field: `receipt`
-- `POST /api/user/payment-qr` - Field: `qrCode`
-
-### Access Files
-```
-http://localhost:3001/uploads/{filename}
-```
-
 ## Security Features
 
-- ✅ Clerk JWT authentication
-- ✅ User authorization checks
-- ✅ Admin-only operations
-- ✅ File type validation
-- ✅ File size limits
-- ✅ CORS configuration
-- ✅ Input validation
-- ✅ SQL injection prevention (MongoDB)
-- ✅ XSS protection
-- ✅ Secure file storage
-
-## Error Handling
-
-All endpoints return consistent error responses:
-
-```json
-{
-  "error": "Error message"
-}
-```
-
-**Status Codes:**
-- `200` - Success
-- `201` - Created
-- `400` - Bad Request
-- `401` - Unauthorized
-- `403` - Forbidden
-- `404` - Not Found
-- `500` - Server Error
-
-## Development Notes
-
-### Adding New Features
-
-1. Create model in `/Backend/models`
-2. Create controller in `/Backend/controllers`
-3. Create routes in `/Backend/routes`
-4. Import routes in `Backend/index.js`
-5. Create frontend components in `/frontend/src/app`
-6. Update API documentation
-
-### Database Indexes
-
-The models include optimized indexes for:
-- Trip queries by member
-- Expense queries by trip and date
-- Settlement queries by trip and status
-- Transaction log queries by trip and timestamp
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-## Ready to Use!
-
-TripVault is fully implemented and production ready. All features are functional with proper authentication, real-time updates, and data persistence.
-
-## License
-
-This project is licensed under the MIT License.
-
+-  Clerk JWT authentication
+-  User authorization checks
+-  Admin-only operations
+-  File type validation
+-  File size limits
+-  CORS configuration
+-  Input validation
+-  SQL injection prevention (MongoDB)
